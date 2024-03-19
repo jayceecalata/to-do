@@ -1,4 +1,8 @@
-export class Container {
+export default class Todo {
+    constructor(title) {
+        this.title = title;
+    }
+
     array = []
 
     add = item => {
@@ -9,12 +13,5 @@ export class Container {
 
     removeFrom = index => {
         this.array.splice(index, 1);
-    }
-}
-
-export class Project extends Container {
-    constructor(name) {
-        super();
-        this.name = name;
     }
 }
