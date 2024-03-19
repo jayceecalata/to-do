@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        title: 'Put your title here',
+        title: 'To-do List',
         filename: 'index.html',
         inject: 'body',
     })
