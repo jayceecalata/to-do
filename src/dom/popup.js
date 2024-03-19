@@ -1,4 +1,5 @@
 import { createTodo, saveToLocal } from "../logic/actions";
+import { updateNav } from "./sidebar";
 
 const popup = document.createElement("div");
 popup.classList.add("popup");
@@ -18,6 +19,7 @@ buttonCreateTodo.addEventListener("click", (e) => {
     const todo = createTodo(inputTodoTitle.value);
     saveToLocal(todo);
     inputTodoTitle.value = "";
+    updateNav();
 })
 
 form.appendChild(inputTodoTitle);
