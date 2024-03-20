@@ -1,4 +1,4 @@
-class Item {
+export default class Item {
     constructor(title, description, due, priority) {
         this.title = title;
         this.description = description;
