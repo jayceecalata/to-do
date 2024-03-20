@@ -4,14 +4,12 @@ export default class Todo {
     }
 
     array = []
+}
 
-    add = item => {
-        this.array.push(item);
-    }
+Todo.prototype.add = function(item) {
+    return (this.array.push(item));
+}
 
-    getItems = () => this.array;
-
-    removeFrom = index => {
-        this.array.splice(index, 1);
-    }
+Todo.prototype.getItems = function() {
+    return this.array;
 }
