@@ -9,7 +9,7 @@ export function saveToLocal(item) {
 }
 
 export function getSelectedTodo(key) {
-    const obj = JSON.parse(localStorage.getItem(key));
-    Object.setPrototypeOf(obj, Todo.prototype);
-    return (obj.getItems());
+    const todo = JSON.parse(localStorage.getItem(key));
+    Object.setPrototypeOf(todo, Todo.prototype);
+    return (todo);
 }

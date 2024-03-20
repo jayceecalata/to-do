@@ -1,4 +1,5 @@
 import { getSelectedTodo } from "../logic/actions";
+import { updateContent } from "./content";
 import { openPopup } from "./popup";
 
 const sidebar = document.createElement("div");
@@ -17,8 +18,8 @@ function createNav() {
         const div = document.createElement("div");
         const button = document.createElement("button");
         button.addEventListener("click", () => {
-            const current = getSelectedTodo(key);
-            // get the contents to allow manipulation
+            const currentTodo = getSelectedTodo(key);
+            updateContent(currentTodo);
         })
         button.textContent = key;
 
