@@ -1,3 +1,4 @@
+import { getSelectedTodo } from "../logic/actions";
 import { openPopup } from "./popup";
 
 const sidebar = document.createElement("div");
@@ -12,10 +13,14 @@ function createNav() {
     todoNav.classList.add("todo-nav");
 
     const links = Object.keys(localStorage);
-    for (const link of links) {
+    for (const key of links) {
         const div = document.createElement("div");
         const button = document.createElement("button");
-        button.textContent = link;
+        button.addEventListener("click", () => {
+            const current = getSelectedTodo(key);
+            // get the contents to allow manipulation
+        })
+        button.textContent = key;
 
         div.appendChild(button);
         todoNav.appendChild(div);
