@@ -1,13 +1,32 @@
-import { getSelectedTodo } from "../logic/actions";
+import { createTodo, getSelectedTodo, saveToLocal } from "../logic/actions";
 import { updateContent } from "./content";
-import { openPopup } from "./popup";
 
 const sidebar = document.createElement("div");
 sidebar.classList.add("sidebar");
 
-const buttonNewTodo = document.createElement("button");
-buttonNewTodo.textContent = "New Todo";
-buttonNewTodo.addEventListener("click", openPopup)
+/**
+ * a form may not be necessary in this use case or even unconventional, however 
+ * enclosing input with a form provides ease-of-use as you can just press enter 
+ * right after typing, as opposed to pressing tab or clicking a submit button 
+ * next to it
+ */
+
+const newTodo = document.createElement("form");
+const inputTodoTitle = document.createElement("input", ["type", "text"]);
+inputTodoTitle.id = "todo-title";
+inputTodoTitle.setAttribute("placeholder" ,"New Todo");
+
+newTodo.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const todo = createTodo(inputTodoTitle.value);
+    // validate todo
+
+    saveToLocal(todo);
+    document.querySelector("#todo-title").value = "";
+    updateNav();
+});
+
+newTodo.appendChild(inputTodoTitle);
 
 function createNav() {   
     const todoNav = document.createElement("div");
@@ -26,7 +45,6 @@ function createNav() {
         div.appendChild(button);
         todoNav.appendChild(div);
     }
-
     return todoNav;
 }
 
@@ -36,7 +54,7 @@ export function updateNav() {
     sidebar.appendChild(createNav());
 }
 
-sidebar.appendChild(buttonNewTodo);
+sidebar.appendChild(newTodo);
 sidebar.appendChild(createNav());
 
 export default sidebar;
